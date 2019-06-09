@@ -1,11 +1,11 @@
 ### general
-![](https://github.com/lognxn/github_data/blob/master/images/biji/1.java/project/1.jinkins_general.jpg?raw=true)
+![](images/2019-06-09-11-29-29.png)
 ### 源码管理
-![](https://github.com/lognxn/github_data/blob/master/images/biji/1.java/project/2.jinkins_source_mgt.jpg?raw=true)
+![](images/2019-06-09-11-29-35.png)
 ### 构建
-![](https://github.com/lognxn/github_data/blob/master/images/biji/1.java/project/3.jinkins_build1.jpg?raw=true)
+![](images/2019-06-09-11-29-42.png)
 通过shell脚本进行构建
-![](https://github.com/lognxn/github_data/blob/master/images/biji/1.java/project/4.jinkins_build2.jpg?raw=true)
+![](images/2019-06-09-11-29-50.png)
 shell脚本如下：
 ```shell
 #!/bin/bash
