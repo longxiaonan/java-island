@@ -1,4 +1,5 @@
 转自：https://juejin.im/post/5cf3edf7e51d454f71439c79?utm_source=gold_browser_extension#heading-2
+[toc]
 ## 1. 前言
 在目前众多编程语言中，Java 语言的表现还是抢眼，不论是企业级服务端开发，还是 Andorid 客户端开发，都是作为开发语言的首选，甚至在大数据开发领域，Java 语言也能占有一席之地，如 Hadoop，Spark，Flink 大数据等。而作为已经诞生 24 年的 Java 相比其他语言来说，编写起来略显得冗长和复杂，而为了能极大提升 Java 开发的效率和代码简洁性，一个 Java 库 Lombok 就这样诞生了。
 首先我们还是看下 Lombok 官方的描述：
@@ -382,11 +383,3 @@ public class VarValExample {
         log.info("text:{},num:{}", text, num); // text:abc,num:2
     }
 }
-3. 结语
-到这里我们学习了 Lombok 的近乎 80% 常用的注解，应用在我们的日常开发中已经是绰绰有余了，开始尝试 使用 Lombok 吧，慢慢地就会感受下效率的提升以及代码的优雅。
-如果读完觉得有收获的话，欢迎点【好看】，点击文章头图，扫码关注【闻人的技术博客】😄😄😄。
-
-作者：闻人的技术博客
-链接：https://juejin.im/post/5cf3edf7e51d454f71439c79
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
