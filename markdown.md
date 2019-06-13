@@ -22,3 +22,28 @@ JSONObject object = new JSONObject();
 <p align="center">居中文本</p>
 
 ## <center>居中文本</center>
+
+
+## 链接与图片
+让文字做链接
+[百度](https://www.baidu.com)
+
+点击图片可以跳转到相应链接
+[![](https://img.shields.io/badge/download-1K-brightgreen.svg)](https://www.baidu.com)
+
+只显示图片
+![](https://img.shields.io/badge/download-1K-brightgreen.svg)
+
+在线生成图标网站：
+https://shields.io/
+
+demo:
+![瘦小的圆角矩形](https://img.shields.io/badge/language-swift-brightgreen.svg?style=plastic)
+
+![正常大小的圆角矩形](https://img.shields.io/badge/language-swift-green.svg)
+
+![正常大小的矩形](https://img.shields.io/badge/language-swift-yellowgreen.svg?style=flat-square)
+
+![社交样式](https://img.shields.io/badge/Stack_Overflow-10k+-yellow.svg?style=social)
+
+![带logo社交样式](https://img.shields.io/badge/GitHu-10k+-yellow.svg?style=social&logo=github)
