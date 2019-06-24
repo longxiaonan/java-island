@@ -23,10 +23,10 @@ JSONObject object = new JSONObject();
 
 ## 文本样式
 `&nbsp;`  是换行，也可用用`<br/>`
+<br/>
 `&emsp;` 是空格
 <p align="center">居中文本</p>
 <center>居中文本(vscode可以用，在github失效)</center>
-
 <strong>加粗</strong>
 <br/>
 无序列表：
