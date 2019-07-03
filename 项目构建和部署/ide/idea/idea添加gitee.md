@@ -1,4 +1,4 @@
-## <center>Idea使用gitee管理项目</center>
+## Idea使用gitee管理项目
 提前电脑已安装git，知道git.exe路径
 ### idea配置git
 选择Git 找到git安装目录中Git/bin/git.exe ，点击Test按钮测试，看到如下结果表示idea配置Git成功，点击OK
