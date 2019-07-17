@@ -1,5 +1,5 @@
 ### <center>linux常用命令</center>
-[toc]
+[TOC]
 ### 磁盘命令
 ```shell
 [root@zhirui-server tmp]# du -sh
@@ -31,7 +31,51 @@ tmpfs                                   7.8G     0  7.8G    0% /sys/fs/cgroup
 tmpfs                                   1.6G   36K  1.6G    1% /run/user/0
 [root@zhirui-server tmp]# 
 ```
+```shell
+root@weitexun:/home/MiddleService# du -sh ./*
+223M    ./backup
+16K    ./conf
+12K    ./config
+21M    ./debug.log
+201M    ./logs
+148K    ./middle_main.jar
+43M    ./middle_main_lib
+8.0K    ./output
+4.0K    ./run.bat
+4.0K    ./run.sh
+4.0K    ./start.sh
+4.0K    ./tempExcel
+32K    ./templates
+root@weitexun:/home/MiddleService# cd logs/
+root@weitexun:/home/MiddleService/logs# ll
+总用量 205012
+drwxrwxrwx 2 root root    192512 10月  1 11:19 ./
+drwxrwxrwx 9  777 root      4096 9月  30 17:04 ../
+-rw-r--r-- 1 root root 104859480 10月  1 11:18 debug.log3469992168401225.tmp
+-rw-r--r-- 1 root root 104864077 10月  1 11:18 debug.log3469997842751189.tmp
+root@weitexun:/home/MiddleService/logs# cd ..
+root@weitexun:/home/MiddleService# df -hl
+文件系统                    容量  已用  可用 已用% 挂载点
+udev                          16G    0  16G    0% /dev
+tmpfs                        3.2G  362M  2.8G  12% /run
+/dev/mapper/ubuntu--vg-root  885G  783G  58G  94% /
+tmpfs                        16G  152K  16G    1% /dev/shm
+tmpfs                        5.0M  4.0K  5.0M    1% /run/lock
+tmpfs                        16G    0  16G    0% /sys/fs/cgroup
+/dev/sda1                    472M  108M  340M  25% /boot
+tmpfs                        3.2G  48K  3.2G    1% /run/user/1000
+tmpfs                        3.2G    0  3.2G    0% /run/user/1001
+
+
+
+
+
+```
+
+
+
 ### kill命令
+
 杀死指定线程，kill -9强制杀死线程
 #### ps、grep和kill联合使用杀掉进程
 ##### kill -9 `ps -ef|grep 777|awk '{print $2}'` 
