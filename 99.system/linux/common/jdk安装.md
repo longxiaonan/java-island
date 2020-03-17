@@ -1,4 +1,4 @@
- ### <center>linux下jdk安装</center>
+ ### linux下jdk安装
 ####oracle官网下载jdk。
 
 ####解压后的路径： 
@@ -7,9 +7,10 @@
 ####设置环境变量：
 vi /etc/profile 
 在最后添加如下内容：
+
 ```shell
 #java environment
-export JAVA_HOME=/usr/local/base/jdk1.8.0_181
+export JAVA_HOME=/data/jdk1.8.0_211
 export CLASSPATH=.:${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
 export PATH=$PATH:${JAVA_HOME}/bin
 ```

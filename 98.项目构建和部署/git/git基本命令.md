@@ -1,4 +1,4 @@
-# <center>git基本命令</center>
+# git基本命令
 ## 本地回退版本
 ### 根据commit id进行回退
 在git平台查看commit id，以github为例：

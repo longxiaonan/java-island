@@ -1,7 +1,137 @@
-### <center>linux常用命令</center>
+# linux常用命令
+
 [TOC]
-### 磁盘命令
+### 系统相关命令
+
+#### top命令
+
+https://juejin.im/post/5d590126f265da03db0776b6?utm_source=gold_browser_extension
+
+##### load Average
+
+**在一段时间内，CPU正在处理以及等待CPU处理的进程数之和。**三个数字分别代表了1分钟，5分钟，15分钟的统计值。top中的其他参数具体介绍如下：
+
 ```shell
+
+第一行：
+top - 20:41:08 up 18 days,  5:24,  2 users,  load average: 0.04, 0.03, 0.05
+top：当前时间
+up：机器运行了多少时间
+users：当前有多少用户
+load average：分别是过去1分钟，5分钟，15分钟的负载
+```
+
+> 一个CPU在一个时间片里面只能运行一个进程，CPU核数的多少直接影响到这台机器在同时间能运行的进程数。所以一般来说Load Average的数值别超过这台机器的总核数，就基本没啥问题。
+
+```shell
+第二行：
+
+Tasks: 216 total,   1 running, 215 sleeping,   0 stopped,   0 zombie
+
+Tasks：当前有多少进程
+running：正在运行的进程
+sleeping：正在休眠的进程
+stopped：停止的进程
+zombie：僵尸进程
+```
+
+> running越多，服务器自然压力越大。
+
+```shell
+第三行：
+
+%Cpu(s):  0.2 us,  0.1 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+
+us: 用户进程占CPU的使用率
+sy: 系统进程占CPU的使用率
+ni: 用户进程空间改变过优先级
+id: 空闲CPU占用率
+wa: 等待输入输出的CPU时间百分比
+hi: 硬件的中断请求
+si: 软件的中断请求
+st: steal time
+```
+
+> 这一行代表了CPU的使用情况，us长期过高，表明用户进程占用了大量的CPU时间。us+sy如果长期超过80或者90，可能就代表了CPU性能不足，需要加CPU了
+
+```shell
+第四行&第五行
+KiB Mem : 65810456 total, 30324416 free,  9862224 used, 25623816 buff/cache
+KiB Swap:  7999484 total,  7999484 free,        0 used. 54807988 avail Mem
+
+total：内存总量
+free：空闲内存
+used：使用的
+buffer/cache： 写缓存/读缓存
+```
+
+> 第四第五行分别是内存信息和swap信息。所有程序的运行都是在内存中进行的，所以内存的性能对与服务器来说非常重要。不过当内存的free变少的时候，其实我们并不需要太紧张。真正需要看的是Swap中的used信息。Swap分区是由硬盘提供的交换区，当物理内存不够用的时候，操作系统才会把暂时不用的数据放到Swap中。所以当这个数值变高的时候，说明内存是真的不够用了。
+
+```shell
+第五行往下
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                                                                                                                  
+19868 root      20   0 19.733g 369980  15180 S   0.7  0.6 129:53.91 java                                                                                                                                                                     
+19682 root      20   0 19.859g 5.766g  22252 S   0.3  9.2 139:42.81 java                                                                                                                                                                     
+54625 100       20   0   50868  33512   4104 S   0.3  0.1   0:04.68 fluentd                                                                               
+
+PID:进程id
+USER:进程所有者
+PR:优先级。数值越大优先级越高
+NI:nice值，负值表示高优先级，正值表示低优先级
+VIRT:进程使用的虚拟内存总量
+SWAP:进程使用的虚拟内存中被换出的大小
+RES:进程使用的、未被换出的物理内存大小
+SHR:共享内存大小
+SHR:共享内存大小
+S：进程状态。D表示不可中断的睡眠状态；R表示运行；S表示睡眠；T表示跟踪/停止；Z表示僵尸进程。
+%CPU:上次更新到现在的CPU占用百分比 ；
+%MEM:进程使用的物理内存百分比 ；
+TIME+:进程使用的CPU时间总计，单位1/100秒；
+COMMAND:命令名/命令行
+```
+
+> 这些就是进程信息了，从这里可以看到哪些进程占用系统资源的概况。
+
+### 网络命令netstat
+
+```shell
+netstat -ano | grep 1194
+```
+
+
+
+### 文件相关命令
+
+#### scp命令
+
+文件相关命令相关命令
+
+> 如果是传输的是目录需要`-r`参数
+
+```shell
+scp -r bin/ root@192.168.1.112:/wms
+```
+
+
+
+
+
+### 磁盘命令
+
+```shell
+[root@zhirui-server wms]# du -h   #查看磁盘下文件的大小
+396K	./infile/2019/01/08
+2.1M	./infile/2019/01/16
+24K	./infile/2019/01/25
+4.0K	./infile/2019/01/28
+4.0K	./infile/2019/01/29
+2.5M	./infile/2019/01
+180K	./infile/2019/02/15
+24K	./infile/2019/02/18
+212K	./infile/2019/02/24
+12K	./infile/2019/02/25
+240K	./infile/2019/02/28
 [root@zhirui-server tmp]# du -sh
 12K	.
 [root@zhirui-server tmp]# du -sh *

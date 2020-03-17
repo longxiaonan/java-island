@@ -1,10 +1,52 @@
+# centos7防火墙配置
+
+## 防火墙概述
+
+centos从7开始默认用的是firewalld，iptables的服务是没安装的。如果存在firewalld的基础上又安装了iptables。那么需要两个防火墙都放通端口或者关闭掉，里面的服务才能访问。
+
+> firewalld的启停命令是： 
+>
+> ```shell
+> systemctl stop firewalld.service && systemctl disable firewalld.service
+> 
+> systemctl start firewalld.service && systemctl enable firewalld.service
+> ```
+>
+> 如果想要改用iptables的话，则需要安装 
+>
+> ```shell
+> yum install iptables-services 
+> systemctl stop iptables && systemctl disable iptables
+> systemctl start iptables && systemctl enable iptables
+> ```
+>
+> 也可以用如下命令进行启停：
+>
+> ```shell
+> service iptables start
+> service iptables stop
+> ```
+>
+> iptables防火墙的端口操作：
+>
+> ```
+> # 开启6379
+> /sbin/iptables` `-I INPUT -p tcp --dport 6379 -j ACCEPT
+> # 开启6380
+> /sbin/iptables` `-I INPUT -p tcp --dport 6380 -j ACCEPT
+> # 保存
+> /etc/rc``.d``/init``.d``/iptables` `save
+> # centos 7下执行
+> service iptables save
+> ```
+
+## 状态查看
+
+systemctl unmask firewalld.service
 
 
-## centos7.2防火墙配置
 
-[TOC]
-
-#### 检查防火墙的状态：
+### 检查防火墙的状态：
 
 ```shell
 [root@test1 ~]# firewall-cmd --state
@@ -23,20 +65,26 @@ firewalld.service                             enabled
 
 ```
 
-
-
-#### 关闭防火墙：
+### 查看版本：
 
 ```shell
-[root@test1 ~]# systemctl stop firewalld.service      #关闭防火墙
-
-[root@test1 ~]# 
-[root@test1 ~]# systemctl disable firewalld.service   #禁止开机启动
-Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.
-Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+firewall-cmd --version
 ```
 
-#### 其他启动相关命令：
+### 查看帮助：
+
+```shell
+firewall-cmd --help
+```
+
+### 查看所有打开的端口：
+
+```shell
+firewall-cmd --zone=public --list-ports
+```
+
+## 防火墙启停
+### 启停命令：
 
 ```shell
 重启防火墙：firewall-cmd --reload
@@ -50,13 +98,14 @@ Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
 查看已启动的服务列表：systemctl list-unit-files|grep enabled
 ```
 
-#### 开放端口：
+## 端口开放和删除：
 
 ```shell
-[root@test1 ~]# firewall-cmd --zone=public --add-port=8080/tcp --permanent
-success
-[root@test1 ~]# firewall-cmd --zone=public --add-port=50000/tcp --permanent
-success
+#添加端口
+[root@test1 ~]# firewall-cmd --zone=public --add-port=8081/tcp --permanent
+#移除端口
+[root@test1 ~]# firewall-cmd --zone=public --remove-port=80/tcp --permanent
+
 [root@test1 ~]# firewall-cmd --reload     #重启防火墙
 success
 [root@test1 ~]# firewall-cmd --list-ports

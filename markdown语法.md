@@ -1,4 +1,7 @@
 ## 二级标题测试
+
+[TOC]
+
 ### 三级标题测试
 
 代码：
@@ -41,6 +44,14 @@ JSONObject object = new JSONObject();
    11.aa1
 2. bb
 
+文字颜色：
+
+<font color=red>我是红色</font>
+<font color=#008000>我是绿色</font>
+<font color=Blue>我是蓝色</font>
+<font size=5>我是尺寸</font>
+<font face="黑体" color=green size=5>我是黑体，绿色，尺寸为5</font>
+
 ## 链接与图片
 ![1562512830746](media/1562512830746.png)
 
@@ -77,3 +88,9 @@ demo:
 
 </div>
 <br/>
+
+
+
+[![Build Status](https://travis-ci.org/alibaba/easyexcel.svg?branch=master)](https://travis-ci.org/alibaba/easyexcel)
+[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.alibaba/easyexcel)
+[![License](http://img.shields.io/:license-apache-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)

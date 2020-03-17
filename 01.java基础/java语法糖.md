@@ -545,7 +545,21 @@ public static void main(String... args) {
     }
 }
 ```
-看，这简直是一大福音啊，虽然我之前一般使用IOUtils去关闭流，并不会使用在finally中写很多代码的方式，但是这种新的语法糖看上去好像优雅很多呢。
+看，这简直是一大福音啊，虽然我之前一般使用IOUtils去关闭流，并不会使用在finally中写很多代码的方式，但是这种新的语法糖看上去好像优雅很多呢。不过，需要注意的是，上面的代码还需要优化，应该为每一个资源声明独立的变量，否则的话，某些特殊的情况下，资源可能无法正常关闭。	
+
+```java
+try (FileReader fr = new FileReader("cmower.txt"); 
+	BufferedReader in = new BufferedReader(fr);) {
+	int charRead;
+	while ((charRead = in.read()) != -1) {
+		System.out.printf("%c ", (char) charRead);
+	}
+} catch (IOException ex) {
+	ex.printStackTrace();
+}
+```
+
+
 
 反编译以上代码，看下他的背后原理：
 ```java
